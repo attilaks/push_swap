@@ -1,0 +1,87 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/02/07 18:58:02 by jwillem-          #+#    #+#              #
+#    Updated: 2019/02/09 03:11:18 by jwillem-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# OBJ = $(SRCS:.c=.o)
+
+COMPILE = gcc -Wall -Wextra -Werror -g
+
+SRCDIR = srcs/
+OBJDIR = obj/
+
+CH_FILES = checker
+CH_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(CH_FILES)))
+CH_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(CH_FILES)))
+
+PS_FILES = 
+PS_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(PS_FILES)))
+PS_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(PS_FILES)))
+
+LIBFT = ./libft/libft.a
+INCDIR = includes/
+LIBLINK = -L ./lib -lftprintf
+LIBINC = -I ./lib/includes
+
+all: library checker push_swap
+
+library:
+	@echo "Compiling library..."
+	@make -C ./lib
+	@echo "Library compiled!"
+
+$(OBJDIR):
+	@echo "Creating Push_Swap object files directory..."
+	@mkdir $(OBJDIR)
+	@echo "Directory created!"
+
+$(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR)
+	@$(COMPILE) -I $(INCDIR) -c $< -o $@
+
+$(CH_OBJ): | $(OBJDIR)
+
+checker: $(CH_OBJ) | library
+	@echo "Compiling checker..."
+	@$(COMPILE) $(CH_SRC) -c 
+
+push_swap:
+
+
+# %.o:%.c
+# 	@$(COMPILE) $(LIBINC) $(INC) -o $@ -c $<
+
+# libft: $(LIBFT)
+
+# $(LIBFT):
+# 	@echo "Compiling libft..."
+# 	@make -C ./libft
+# 	@echo "OK!"
+
+$(NAME): libft $(OBJ)
+	@echo "Compiling fillit..."
+	@$(CC) $(LIBLINK) -o $(NAME) $(OBJ)
+	@echo "OK!"
+
+rmlib:
+	@echo "Deleting libft object files and libft.a..."
+	@make fclean -C ./libft
+	@echo "OK!"
+
+clean: rmlib
+	@echo "Deleting fillit object files..."
+	@rm -rf $(OBJ)
+	@echo "OK!"
+
+fclean: clean
+	@echo "Deleting fillit..."
+	@rm -rf $(NAME)
+	@echo "OK!"
+
+re: fclean all
