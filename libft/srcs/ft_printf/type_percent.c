@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	print_type_percent(f_specs *specs)
+void	print_type_percent(t_specs *specs)
 {
 	char *val;
 

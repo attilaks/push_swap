@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/10 20:12:51 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/11 21:09:14 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		main(int ac, char **av)
 		!(stacks.barr = (int *)malloc(sizeof(int) * (ac - 1))))
 			put_error(&stacks, "error");
 	if (ac > 1)
-	{		
+	{
 		validate_and_rec(&stacks, ac, av);
 		get_sort_instructions(&stacks);
 		check_sort(&stacks, ac - 1);

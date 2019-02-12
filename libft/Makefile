@@ -6,7 +6,7 @@
 #    By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 17:32:16 by wballaba          #+#    #+#              #
-#    Updated: 2019/02/10 21:38:19 by jwillem-         ###   ########.fr        #
+#    Updated: 2019/02/12 16:43:32 by jwillem-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME := libftprintf.a
 PFDIR := ft_printf/
 PF :=   create_struct	find_specifier		ft_printf	get_value	handling_specifier \
 		type_a		type_c		type_di		type_e		type_f		type_g		type_oux \
-		type_p		type_percent	type_s	type_non	rounding_a 	type_n\
+		type_p		type_percent	type_s	type_non	type_n		rounding_a \
 
 LSTDIR := ft_lst/
 LST :=	ft_lstadd	ft_lstdel	ft_lstdelone	ft_lstiter	ft_lstlen	ft_lstmap \
@@ -35,7 +35,7 @@ STR :=	ft_atoi		ft_close_file	ft_intlen	ft_isalnum	ft_isalpha	ft_isascii	ft_isdi
 		ft_strmap	ft_strmapi	ft_strncat		ft_strncmp		ft_strncpy			ft_strnequ	\
 		ft_strnew	ft_strnstr	ft_strpbrk		ft_strrchr		ft_strsplit			ft_strstr	\
 		ft_strsub	ft_strtoupper	ft_strtrim	ft_tolower		ft_toupper			ft_uitoa_base	\
-		get_next_line 	ft_swap\
+		get_next_line 	ft_swap	\
 
 COMPILE := gcc -Wall -Wextra -Werror -g
 OBJDIR := obj/
