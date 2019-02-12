@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/11 21:09:14 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/12 21:31:21 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,53 @@ void		put_error(t_stack *stacks, char *error)
 	exit(1);
 }
 
-int			is_duplicate(int *aarr, int i)
+void	get_sort_instructions(t_stack *stacks)
 {
-	int	j;
-	
-	j = i;
-	while (--i >= 0)
-		if (aarr[j] == aarr[i])
-			return (1);
-	return (0);
+	char	*line;
+
+	print_stack(stacks);
+	// ps_push(stacks, "pb");
+	// print_stack(stacks);
+	while (get_next_line(0, &line) == 1)
+	{
+		if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "sb") || \
+			!ft_strcmp(line, "ss"))
+			ps_swap(stacks, line);
+		else if (!ft_strcmp(line, "pa") || !ft_strcmp(line, "pb"))
+			ps_push(stacks, line);
+		else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rb") || \
+			!ft_strcmp(line, "rr"))
+			ps_rotate(stacks, line);
+		else if (!ft_strcmp(line, "rra") || !ft_strcmp(line, "rrb") || \
+			!ft_strcmp(line, "rrr"))
+			ps_rev_rotate(stacks, line);
+		else
+			put_error(stacks, "error");
+		print_stack(stacks);
+	}
 }
 
 void		validate_and_rec(t_stack *stacks, int ac, char **av)
 {
 	int		i;
+	int		j;
 	char	*str;
 
 	i = 0;
 	while (i < ac - 1)
 	{
 		stacks->aarr[i] = ft_atoi(av[i + 1]);
-		str = ft_itoa(stacks->aarr);
-		if (ft_strcmp(str, av[i + 1]) || is_duplicate(stacks->aarr, i))
+		str = ft_itoa(stacks->aarr[i]);
+		if (ft_strcmp(str, av[i + 1]))
 		{
 			free(str);
 			put_error(stacks, "error");
 		}
 		free(str);
+		j = i;
+		while (--j >= 0)
+			if (stacks->aarr[i] == stacks->aarr[j])
+				put_error(stacks, "error");
 		i++;
 		stacks->alen++;
 	}

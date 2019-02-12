@@ -6,17 +6,17 @@
 #    By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 17:32:16 by wballaba          #+#    #+#              #
-#    Updated: 2019/02/10 14:57:02 by jwillem-         ###   ########.fr        #
+#    Updated: 2019/02/12 20:09:37 by jwillem-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = checker
 
-SRCS = srcs/checker.c
+SRCS = srcs/checker.c srcs/operations.c srcs/stack_print.c
 OBJ = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT = ./libft/libftprintf.a
 INC = -I ./includes
@@ -36,7 +36,7 @@ $(LIBFT):
 	@echo "OK!"
 
 $(NAME): libft $(OBJ)
-	@echo "Compiling fillit..."
+	@echo "Compiling checker..."
 	@$(CC) $(LIBLINK) -o $(NAME) $(OBJ)
 	@echo "OK!"
 

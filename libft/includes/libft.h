@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 19:08:46 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/11 21:51:18 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/12 18:49:49 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ char			*ft_uitoa_base(unsigned long long num, int base);
 double			ft_power(double num, int power);
 char			*ft_strjoin_free(char *s1, char *s2, int operation);
 char			*ft_str_toupper(char *str);
+void			ft_swap(int *a, int *b);
 int				ft_printf(const char *format, ...);
 
 #endif
