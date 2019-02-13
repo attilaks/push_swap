@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/13 19:24:28 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/13 19:28:05 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		put_error(t_stack *stacks, char *error)
 	exit(1);
 }
 
-void		get_sort_instructions(t_stack *stacks)
+static void	get_sort_instructions(t_stack *stacks)
 {
 	char	*line;
 
