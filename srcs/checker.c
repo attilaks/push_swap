@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/13 18:06:26 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:48:10 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,8 @@ static void	check_sort(t_stack *stacks, int num_quant)
 
 int		main(int ac, char **av)
 {
-	int	i;
 	t_stack	stacks;
 
-	i = 0;
 	stacks.alen = 0;
 	stacks.blen = 0;
 	if (!(stacks.aarr = (int *)malloc(sizeof(int) * (ac - 1))) || \
