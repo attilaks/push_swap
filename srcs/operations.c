@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:17:21 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/13 18:06:37 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/13 19:24:42 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	ps_rev_rotate(t_stack *stacks, char *line)
 	int	tmp;
 
 	a = stacks->alen;
-	b = stacks->blen;	
+	b = stacks->blen;
 	if (!ft_strcmp(line, "rra"))
 	{
 		tmp = stacks->aarr[a - 1];

@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/13 18:50:55 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/13 19:24:28 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void		put_error(t_stack *stacks, char *error)
 	if (!ft_strcmp(error, "error"))
 		write(2, "Error\n", 6);
 	else if (!ft_strcmp(error, "ko"))
-		ft_printf("KO\n");	
+		ft_printf("KO\n");
 	free(stacks->aarr);
 	free(stacks->barr);
 	exit(1);
 }
 
-void	get_sort_instructions(t_stack *stacks)
+void		get_sort_instructions(t_stack *stacks)
 {
 	char	*line;
 
@@ -91,7 +91,7 @@ static void	check_sort(t_stack *stacks, int num_quant)
 	ft_printf("OK\n");
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_stack	stacks;
 
@@ -99,7 +99,7 @@ int		main(int ac, char **av)
 	stacks.blen = 0;
 	if (!(stacks.aarr = (int *)malloc(sizeof(int) * (ac - 1))) || \
 		!(stacks.barr = (int *)malloc(sizeof(int) * (ac - 1))))
-			put_error(&stacks, "error");
+		put_error(&stacks, "error");
 	if (ac > 1)
 	{
 		validate_and_rec(&stacks, ac, av);
