@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:17:21 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/12 22:00:57 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:06:37 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,36 @@ void	ps_swap(t_stack *stacks, char *line)
 	}
 }
 
-// void	ps_push(t_stack *stacks, char *line)
-// {
-// 	if (!ft_strcmp(line, "pa"))
-// 	{
-// 		if (stacks->blen-- > 0 && ++stacks->alen)
-// 			ft_swap(&stacks->aarr[stacks->alen - 1], \
-// 			&stacks->barr[stacks->blen]);
-// 	}
-// 	else if (!ft_strcmp(line, "pb"))
-// 	{
-// 		if (stacks->alen-- > 0 && ++stacks->blen)
-// 			ft_swap(&stacks->aarr[stacks->alen], \
-// 			&stacks->barr[stacks->blen - 1]);
-// 			// ft_swap(&stacks->aarr[0], &stacks->barr[-1]);
-// 	}
-// }
+void	ps_push_a(t_stack *stacks)
+{
+	int	i;
+
+	if (stacks->blen == 0)
+		return ;
+	i = ++stacks->alen;
+	while (--i > 0)
+		stacks->aarr[i] = stacks->aarr[i - 1];
+	stacks->aarr[0] = stacks->barr[0];
+	--stacks->blen;
+	i = -1;
+	while (++i < stacks->blen)
+		stacks->barr[i] = stacks->barr[i + 1];
+}
 
 void	ps_push_b(t_stack *stacks)
 {
-	int	atmp[stacks->alen - 1];
-	int	btmp[stacks->blen + 1];
 	int	i;
 
-	i = 0;
 	if (stacks->alen == 0)
 		return ;
-	btmp[0] = stacks->aarr[0];
+	i = ++stacks->blen;
+	while (--i > 0)
+		stacks->barr[i] = stacks->barr[i - 1];
+	stacks->barr[0] = stacks->aarr[0];
+	--stacks->alen;
+	i = -1;
+	while (++i < stacks->alen)
+		stacks->aarr[i] = stacks->aarr[i + 1];
 }
 
 void	ps_rotate(t_stack *stacks, char *line)
@@ -82,8 +85,8 @@ void	ps_rotate(t_stack *stacks, char *line)
 	}
 	else if (!ft_strcmp(line, "rr"))
 	{
-		ps_rev_rotate(stacks, "ra");
-		ps_rev_rotate(stacks, "rb");
+		ps_rotate(stacks, "ra");
+		ps_rotate(stacks, "rb");
 	}
 }
 
@@ -111,7 +114,7 @@ void	ps_rev_rotate(t_stack *stacks, char *line)
 	}
 	else if (!ft_strcmp(line, "rrr"))
 	{
-		ps_rotate(stacks, "rra");
-		ps_rotate(stacks, "rrb");
+		ps_rev_rotate(stacks, "rra");
+		ps_rev_rotate(stacks, "rrb");
 	}
 }

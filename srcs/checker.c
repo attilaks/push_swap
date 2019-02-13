@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/12 21:31:21 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:06:26 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ void	get_sort_instructions(t_stack *stacks)
 	char	*line;
 
 	print_stack(stacks);
-	// ps_push(stacks, "pb");
-	// print_stack(stacks);
 	while (get_next_line(0, &line) == 1)
 	{
 		if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "sb") || \
 			!ft_strcmp(line, "ss"))
 			ps_swap(stacks, line);
-		else if (!ft_strcmp(line, "pa") || !ft_strcmp(line, "pb"))
-			ps_push(stacks, line);
+		else if (!ft_strcmp(line, "pa"))
+			ps_push_a(stacks);
+		else if (!ft_strcmp(line, "pb"))
+			ps_push_b(stacks);
 		else if (!ft_strcmp(line, "ra") || !ft_strcmp(line, "rb") || \
 			!ft_strcmp(line, "rr"))
 			ps_rotate(stacks, line);
