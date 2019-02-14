@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/13 19:28:05 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/14 19:38:14 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void		put_error(t_stack *stacks, char *error)
 		write(2, "Error\n", 6);
 	else if (!ft_strcmp(error, "ko"))
 		ft_printf("KO\n");
-	free(stacks->aarr);
-	free(stacks->barr);
+	free(stacks->a);
+	free(stacks->b);
 	exit(1);
 }
 
@@ -58,8 +58,8 @@ void		validate_and_rec(t_stack *stacks, int ac, char **av)
 	i = 0;
 	while (i < ac - 1)
 	{
-		stacks->aarr[i] = ft_atoi(av[i + 1]);
-		str = ft_itoa(stacks->aarr[i]);
+		stacks->a[i] = ft_atoi(av[i + 1]);
+		str = ft_itoa(stacks->a[i]);
 		if (ft_strcmp(str, av[i + 1]))
 		{
 			free(str);
@@ -68,7 +68,7 @@ void		validate_and_rec(t_stack *stacks, int ac, char **av)
 		free(str);
 		j = i;
 		while (--j >= 0)
-			if (stacks->aarr[i] == stacks->aarr[j])
+			if (stacks->a[i] == stacks->a[j])
 				put_error(stacks, "error");
 		i++;
 		stacks->alen++;
@@ -84,7 +84,7 @@ static void	check_sort(t_stack *stacks, int num_quant)
 		put_error(stacks, "ko");
 	while (i < stacks->alen)
 	{
-		if (stacks->aarr[i] < stacks->aarr[i - 1])
+		if (stacks->a[i] < stacks->a[i - 1])
 			put_error(stacks, "ko");
 		i++;
 	}
@@ -97,8 +97,8 @@ int			main(int ac, char **av)
 
 	stacks.alen = 0;
 	stacks.blen = 0;
-	if (!(stacks.aarr = (int *)malloc(sizeof(int) * (ac - 1))) || \
-		!(stacks.barr = (int *)malloc(sizeof(int) * (ac - 1))))
+	if (!(stacks.a = (int *)malloc(sizeof(int) * (ac - 1))) || \
+		!(stacks.b = (int *)malloc(sizeof(int) * (ac - 1))))
 		put_error(&stacks, "error");
 	if (ac > 1)
 	{
@@ -106,7 +106,7 @@ int			main(int ac, char **av)
 		get_sort_instructions(&stacks);
 		check_sort(&stacks, ac - 1);
 	}
-	free(stacks.aarr);
-	free(stacks.barr);
+	free(stacks.a);
+	free(stacks.b);
 	return (0);
 }

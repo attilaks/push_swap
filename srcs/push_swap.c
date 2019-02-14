@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 20:09:56 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/13 20:23:05 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/14 19:40:28 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,19 @@
 
 int	main(int ac, char *av)
 {
-	t_stack	stacks;
+	t_stack	stk;
 
-	stacks.alen = 0;
-	stacks.blen = 0;
-	if (!(stacks.aarr = (int *)malloc(sizeof(int) * (ac - 1))) || \
-		!(stacks.barr = (int *)malloc(sizeof(int) * (ac - 1))))
-		put_error(&stacks, "error");
+	stk.alen = 0;
+	stk.blen = 0;
+	if (!(stk.a = (int *)malloc(sizeof(int) * (ac - 1))) || \
+		!(stk.b = (int *)malloc(sizeof(int) * (ac - 1))))
+		put_error(&stk, "error");
 	if (ac > 1)
 	{
-		validate_and_rec(&stacks, ac, av);
-
+		validate_and_rec(&stk, ac, av);
 	}
+	print_stack(&stk);
+	free(stk.a);
+	free(stk.b);
+	return(0);
 }

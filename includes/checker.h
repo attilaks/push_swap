@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/13 20:23:02 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/14 19:35:30 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct	s_stack
 {
-	int	*aarr;
-	int	*barr;
+	int	*a;
+	int	*b;
 	int	alen;
 	int	blen;
 }				t_stack;

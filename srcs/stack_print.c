@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 18:13:31 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/13 18:06:18 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/14 19:39:32 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	printstackif_a_islonger(t_stack *stacks, int lendif)
 	i = 0;
 	j = 0;
 	while (lendif-- > 0)
-		ft_printf("%-d\n", stacks->aarr[i++]);
+		ft_printf("%-d\n", stacks->a[i++]);
 	while (i < stacks->alen && j < stacks->blen)
-		ft_printf("%-11d\t%-d\n", stacks->aarr[i++], stacks->barr[j++]);
+		ft_printf("%-11d\t%-d\n", stacks->a[i++], stacks->b[j++]);
 }
 
 static void	printstackif_b_islonger(t_stack *stacks, int lendif)
@@ -33,9 +33,9 @@ static void	printstackif_b_islonger(t_stack *stacks, int lendif)
 	i = 0;
 	j = 0;
 	while (lendif++ < 0)
-		ft_printf("           \t%-d\n", stacks->barr[j++]);
+		ft_printf("           \t%-d\n", stacks->b[j++]);
 	while (i < stacks->alen && j < stacks->blen)
-		ft_printf("%-11d\t%-d\n", stacks->aarr[i++], stacks->barr[j++]);
+		ft_printf("%-11d\t%-d\n", stacks->a[i++], stacks->b[j++]);
 }
 
 void		print_stack(t_stack *stacks)
