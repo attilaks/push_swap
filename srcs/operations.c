@@ -6,13 +6,13 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:17:21 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/14 20:33:09 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/18 20:54:08 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ps_swap(t_stack *stacks, char *line)
+void	ps_swap(t_stack *stacks, char *line, int print)
 {
 	if (!ft_strcmp(line, "sa"))
 	{
@@ -26,12 +26,14 @@ void	ps_swap(t_stack *stacks, char *line)
 	}
 	else if (!ft_strcmp(line, "ss"))
 	{
-		ps_swap(stacks, "sa");
-		ps_swap(stacks, "sb");
+		ps_swap(stacks, "sa", 0);
+		ps_swap(stacks, "sb", 0);
 	}
+	if (print)
+		ft_printf("%s\n", line);
 }
 
-void	ps_push_a(t_stack *stacks)
+void	ps_push_a(t_stack *stacks, int print)
 {
 	int	i;
 
@@ -45,9 +47,11 @@ void	ps_push_a(t_stack *stacks)
 	i = -1;
 	while (++i < stacks->blen)
 		stacks->b[i] = stacks->b[i + 1];
+	if (print)
+		ft_printf("pa\n");
 }
 
-void	ps_push_b(t_stack *stacks)
+void	ps_push_b(t_stack *stacks, int print)
 {
 	int	i;
 
@@ -61,9 +65,11 @@ void	ps_push_b(t_stack *stacks)
 	i = -1;
 	while (++i < stacks->alen)
 		stacks->a[i] = stacks->a[i + 1];
+	if (print)
+		ft_printf("pb\n");
 }
 
-void	ps_rotate(t_stack *stacks, char *line)
+void	ps_rotate(t_stack *stacks, char *line, int print)
 {
 	int	i;
 	int	tmp;
@@ -85,36 +91,38 @@ void	ps_rotate(t_stack *stacks, char *line)
 	}
 	else if (!ft_strcmp(line, "rr"))
 	{
-		ps_rotate(stacks, "ra");
-		ps_rotate(stacks, "rb");
+		ps_rotate(stacks, "ra", 0);
+		ps_rotate(stacks, "rb", 0);
 	}
+	if (print)
+		ft_printf("%s\n", line);
 }
 
-void	ps_rev_rotate(t_stack *stacks, char *line)
+void	ps_rev_rotate(t_stack *stacks, char *line, int print)
 {
-	int	al;
-	int	bl;
+	int	len;
 	int	tmp;
 
-	al = stacks->alen;
-	bl = stacks->blen;
+	len = (!ft_strcmp(line, "rra") ? stacks->alen : stacks->blen);
 	if (!ft_strcmp(line, "rra"))
 	{
-		tmp = stacks->a[al - 1];
-		while (--al > 0)
-			stacks->a[al] = stacks->a[al - 1];
-		stacks->a[al] = tmp;
+		tmp = stacks->a[len - 1];
+		while (--len > 0)
+			stacks->a[len] = stacks->a[len - 1];
+		stacks->a[len] = tmp;
 	}
 	else if (!ft_strcmp(line, "rrb"))
 	{
-		tmp = stacks->b[bl - 1];
-		while (--bl > 0)
-			stacks->b[bl] = stacks->b[bl - 1];
-		stacks->b[bl] = tmp;
+		tmp = stacks->b[len - 1];
+		while (--len > 0)
+			stacks->b[len] = stacks->b[len - 1];
+		stacks->b[len] = tmp;
 	}
 	else if (!ft_strcmp(line, "rrr"))
 	{
-		ps_rev_rotate(stacks, "rra");
-		ps_rev_rotate(stacks, "rrb");
+		ps_rev_rotate(stacks, "rra", 0);
+		ps_rev_rotate(stacks, "rrb", 0);
 	}
+	if (print)
+		ft_printf("%s\n", line);
 }
