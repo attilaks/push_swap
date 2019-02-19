@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 20:09:56 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/18 22:00:06 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/19 21:14:01 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,11 @@ void	sort_stack(t_stack *stk)
 	i = 1;
 	first_sort(stk, blocks);
 	filling_a_by_blocks(stk, blocks, &i);
+	sort_first_top_of_a(stk, blocks, &i);
 	while (check_sorted(stk) != stk->alen + stk->blen)
 	{
-		
+		sort_top_a_block(stk, blocks, &i);
+
 	}
 	free(blocks);
 }
@@ -96,7 +98,6 @@ int	main(int ac, char *av)
 		validate_and_rec(&stk, ac, av);
 		sort_stack(&stk);
 	}
-	print_stack(&stk);
 	free(stk.a);
 	free(stk.b);
 	return(0);
