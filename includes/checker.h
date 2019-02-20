@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/19 18:33:20 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:06:24 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct	s_stack
 	int	*b;
 	int	alen;
 	int	blen;
+	int	sorted;
 }				t_stack;
 
 void			put_error(t_stack *stacks, char *error);

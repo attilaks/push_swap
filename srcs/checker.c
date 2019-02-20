@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/18 20:38:42 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/20 21:06:41 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int			main(int ac, char **av)
 
 	stacks.alen = 0;
 	stacks.blen = 0;
+	stacks.sorted = 0;
 	if (!(stacks.a = (int *)malloc(sizeof(int) * (ac - 1))) || \
 		!(stacks.b = (int *)malloc(sizeof(int) * (ac - 1))))
 		put_error(&stacks, "error");

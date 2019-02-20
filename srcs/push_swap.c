@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 20:09:56 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/19 21:14:01 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/20 22:05:28 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,40 @@ int		check_sorted(t_stack *stk)
 	return (sorted);
 }
 
-void	first_sort(t_stack *stk, int *blocks)
-{
-	int	pivot;
-	int	start_alen;
+// void	first_sort(t_stack *stk, int *blocks)
+// {
+// 	int	pivot;
+// 	int	start_alen;
 
-	pivot = find_pivot(stk->a, stk->alen);
-	start_alen = stk->alen;
-	while (stk->blen != start_alen / 2)
-	{
-		if (stk->a[0] < pivot)
-			ps_push_b(stk, 1);
-		else
-			ps_rotate(stk, "ra", 1);
-	}
-	blocks[0] = stk->alen;
-}
+// 	pivot = find_pivot(stk->a, stk->alen);
+// 	start_alen = stk->alen;
+// 	while (stk->blen != start_alen / 2)
+// 	{
+// 		if (stk->a[0] < pivot)
+// 			ps_push_b(stk, 1);
+// 		else
+// 			ps_rotate(stk, "ra", 1);
+// 	}
+// 	blocks[0] = stk->alen;
+// }
+
+// void	sort_stack(t_stack *stk)
+// {
+// 	int	*blocks;
+// 	int	i;
+
+// 	blocks = ft_memalloc(33);
+// 	i = 1;
+// 	first_sort(stk, blocks);
+// 	filling_a_by_blocks(stk, blocks, &i);
+// 	sort_first_top_of_a(stk, blocks, &i);
+// 	while (check_sorted(stk) != stk->alen + stk->blen)
+// 	{
+// 		sort_top_a_block(stk, blocks, &i);
+
+// 	}
+// 	free(blocks);
+// }
 
 void	sort_stack(t_stack *stk)
 {
@@ -72,14 +90,15 @@ void	sort_stack(t_stack *stk)
 	int	i;
 
 	blocks = ft_memalloc(33);
-	i = 1;
-	first_sort(stk, blocks);
-	filling_a_by_blocks(stk, blocks, &i);
-	sort_first_top_of_a(stk, blocks, &i);
-	while (check_sorted(stk) != stk->alen + stk->blen)
+	i = 0;
+	if (check_sorted(stk) != stk->alen + stk->blen)
 	{
-		sort_top_a_block(stk, blocks, &i);
-
+		filling_b_by_blocks(stk, blocks, &i);
+		while ((stk->sorted = check_sorted(stk)) != stk->alen + stk->blen)
+		{
+			sort_top_b_block(stk, blocks, &i);
+			sort_pushed_to_a(stk, blocks, &i);
+		}
 	}
 	free(blocks);
 }
@@ -90,6 +109,7 @@ int	main(int ac, char *av)
 
 	stk.alen = 0;
 	stk.blen = 0;
+	stk.sorted = 0;
 	if (!(stk.a = (int *)malloc(sizeof(int) * (ac - 1))) || \
 		!(stk.b = (int *)malloc(sizeof(int) * (ac - 1))))
 		put_error(&stk, "error");

@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 19:14:30 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/19 21:14:03 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:54:59 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,24 @@ void	sort_first_top_of_a(t_stack *stk, int *blocks, int *i)
 
 void	sort_top_a_block(t_stack *stk, int *blocks, int *i)
 {
-	if (blocks[*i] == 3)
+	int	*b_blocks;
+	int	j;
+
+	b_blocks = ft_memalloc(33);
+	j = 0;
+	if (blocks[*i] <= 3)
 	{
-		sort_top_three_a(stk);
-		*i--;
+		sort_top_three_a(stk, blocks, i);
+		if (stk->blen == 0)	
+			*i--;
 	}
-	
+	split_top_a_block(stk, blocks[*i], b_blocks, &j)
+}
+
+void	split_top_a__block(t_stack *stk, int bl_len, int *b_blocks, int *j)
+{
+	int	rotate;
+	int	pivot_abl;
+
+	pivot_abl = find_pivot(stk->a, )
 }
