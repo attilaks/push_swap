@@ -6,7 +6,7 @@
 #    By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 17:32:16 by wballaba          #+#    #+#              #
-#    Updated: 2019/02/12 16:43:32 by jwillem-         ###   ########.fr        #
+#    Updated: 2019/02/26 03:38:15 by jwillem-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,13 +53,13 @@ OBJ := $(addprefix $(OBJDIR),$(addsuffix .o,$(FILES)))
 all: $(NAME)
 
 $(OBJDIR):
-	@echo "Creating object files directories..."
+	@echo "Creating library object files directories..."
 	@mkdir $(OBJDIR)
 	@mkdir $(OBJDIR)$(PFDIR)
 	@mkdir $(OBJDIR)$(LSTDIR)
 	@mkdir $(OBJDIR)$(MEMDIR)
 	@mkdir $(OBJDIR)$(STRDIR)
-	@echo "OK!"
+	@echo "Library object files directory created!"
 
 $(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR)
 	@$(COMPILE) -I $(INCDIR) -c $< -o $@
@@ -68,18 +68,18 @@ $(NAME): $(OBJ)
 	@echo "Compiling library..."
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "OK!"
+	@echo "Library is compiled!"
 
 clean:
-	@echo "Deleting object files..."
+	@echo "Deleting library object files..."
 	@rm -rf $(OBJDIR)
 	@rm -f $(OBJMKDIR)
-	@echo "OK!"
+	@echo "Library is cleaned!"
 
 fclean: clean
 	@echo "Deleting library binary..." 
 	@rm -f $(NAME)
-	@echo "OK!"
+	@echo "libftprintf.a is deleted!"
 
 re: fclean
 	@$(MAKE) all
@@ -87,4 +87,4 @@ re: fclean
 test: all
 	@echo "Compiling test..."
 	@$(COMPILE) -w -I$(INCDIR) -L. -lftprintf main.c -o test
-	@echo "OK!"
+	@echo "Test is compiled!"
