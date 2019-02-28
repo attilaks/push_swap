@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/26 07:01:38 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/28 05:29:05 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_stack
 **	Common functions
 */
 
-void			put_error(t_stack *stk, char *error);
+void			put_error(/*t_stack *stk, */char *error);
 void			validate_and_rec(t_stack *stk, int ac, char **av);
 void			validate_and_rec_split(t_stack *stk, int numbers, char **split);
 int				split_len(char **split);
@@ -54,11 +54,11 @@ void			print_stack(t_stack *stacks);
 */
 
 int				find_pivot(int *a, int len);
-int				find_upper_pivot(t_stack *stk, int *a, int pivot, int len);
+int				find_low_pivot(t_stack *stk, int *a, int pivot, int len);
 int				check_sorted(t_stack *stk);
 void			sort_top_b_block(t_stack *stk, int *blocks, int *i);
 void			sort_pushed_to_a(t_stack *stk, int *blocks, int *i);
 void			sort_first_top_a(t_stack *stk);
-// void			sort_top_three_a(t_stack *stk, int *blocks, int *i);
+void			sort_top_three_a(t_stack *stk);
 
 #endif

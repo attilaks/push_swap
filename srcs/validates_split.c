@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 04:07:51 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/26 04:10:57 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/28 05:32:34 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void		validate_and_rec_split(t_stack *stk, int numbers, char **split)
 		if (ft_strcmp(str, split[i]))
 		{
 			free(str);
-			put_error(stk, "error");
+			put_error("error");
 		}
 		free(str);
 		j = i;
 		while (--j >= 0)
 			if (stk->a[i] == stk->a[j])
-				put_error(stk, "error");
+				put_error("error");
 		i++;
 		stk->alen++;
 	}

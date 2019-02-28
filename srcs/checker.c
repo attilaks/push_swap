@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/26 03:17:27 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/28 05:31:48 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static void	get_sort_instructions(t_stack *stacks)
 {
 	char	*line;
 
-	// print_stack(stacks);
 	while (get_next_line(0, &line) == 1)
 	{
 		if (!ft_strcmp(line, "sa") || !ft_strcmp(line, "sb") || \
@@ -33,7 +32,7 @@ static void	get_sort_instructions(t_stack *stacks)
 			!ft_strcmp(line, "rrr"))
 			ps_rev_rotate(stacks, line, 0);
 		else
-			put_error(stacks, "error");
+			put_error("error");
 		// print_stack(stacks);
 	}
 	print_stack(stacks);
@@ -45,11 +44,11 @@ static void	check_sort(t_stack *stacks, int num_quant)
 
 	i = 0;
 	if (stacks->blen != 0 || stacks->alen != num_quant)
-		put_error(stacks, "ko");
+		put_error("ko");
 	while (i < stacks->alen - 1)
 	{
 		if (stacks->a[i] > stacks->a[i + 1])
-			put_error(stacks, "ko");			
+			put_error("ko");
 		i++;
 	}
 	ft_printf("OK\n");
@@ -78,7 +77,5 @@ int			main(int ac, char **av)
 		get_sort_instructions(&stacks);
 		check_sort(&stacks, ac - 1);
 	}
-	free(stacks.a);
-	free(stacks.b);
 	return (0);
 }
