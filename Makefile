@@ -6,7 +6,7 @@
 #    By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/07 18:58:02 by jwillem-          #+#    #+#              #
-#    Updated: 2019/02/28 01:08:06 by jwillem-         ###   ########.fr        #
+#    Updated: 2019/03/03 04:45:40 by jwillem-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,12 @@ PUSH_SWAP = push_swap
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
+MLXFLAGS = -framework OpenGL -framework AppKit
 
 SRCDIR = srcs/
 OBJDIR = obj/
 
-CH_FILES = checker	
+CH_FILES = checker	visual
 CH_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(CH_FILES)))
 CH_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(CH_FILES)))
 
@@ -31,15 +32,19 @@ COMMON = validates	validates_split		operations	stack_print
 COMMON_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(COMMON)))
 COMMON_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(COMMON)))
 
-LIBFT = ./libft/libftprintf.a
+LIBFT = ./libft/libftprintf.a 
+MLXLIB = ./minilibx/libmlx.a
 INCDIR = -I ./includes
-LIBLINK = -L ./libft -lftprintf
-LIBINC = -I ./libft/includes
+LIBLINK = -L ./libft -lftprintf -L ./minilibx -lmlx
+LIBINC = -I ./libft/includes -I ./minilibx
 
-all: $(LIBFT) $(CHECKER) $(PUSH_SWAP)
+all: $(LIBFT) $(MLXLIB) $(CHECKER) $(PUSH_SWAP)
 
 $(LIBFT):
 	@make -C ./libft
+
+$(MLXLIB):
+	@make -C ./minilibx
 
 $(OBJDIR):
 	@echo "Creating Push_Swap object files directory..."
@@ -51,16 +56,17 @@ $(OBJDIR)%.o: $(SRCDIR)%.c | $(OBJDIR)
 
 $(CHECKER): $(CH_OBJ) $(COMMON_OBJ)
 	@echo "Compiling checker..."
-	@$(CC) $(LIBLINK) -o $(CHECKER) $(CH_OBJ) $(COMMON_OBJ)
+	@$(CC) $(LIBLINK) $(MLXFLAGS) -o $(CHECKER) $(CH_OBJ) $(COMMON_OBJ)
 	@echo "Checker is compiled!"
 
 $(PUSH_SWAP): $(PS_OBJ) $(COMMON_OBJ)
 	@echo "Compiling push_swap..."
-	@$(CC) $(LIBLINK) -o $(PUSH_SWAP) $(PS_OBJ) $(COMMON_OBJ)
+	@$(CC) $(LIBLINK) $(MLXFLAGS) -o $(PUSH_SWAP) $(PS_OBJ) $(COMMON_OBJ)
 	@echo "Push_swap is compiled!"
 
 libclean:
 	@make clean -C ./libft
+	@make clean -C ./minilibx
 
 clean: libclean
 	@echo "Deleting Push_swap object files..."

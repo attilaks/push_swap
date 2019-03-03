@@ -6,13 +6,13 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 00:57:41 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/28 00:58:10 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/02/28 05:46:17 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int			find_low_pivot(t_stack *stk, int *a, int pivot, int len)
+int			find_low_pivot(int *a, int pivot, int len)
 {
 	int	*tmp;
 	int	i;
@@ -23,7 +23,7 @@ int			find_low_pivot(t_stack *stk, int *a, int pivot, int len)
 	t = 0;
 	tmp_len = len / 2;
 	if (!(tmp = (int *)malloc(sizeof(int) * tmp_len)))
-		put_error(stk, "error");
+		put_error("error");
 	while (++i < len)
 		if (a[i] < pivot)
 			tmp[t++] = a[i];

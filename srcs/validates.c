@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 01:07:02 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/28 05:32:16 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/01 18:40:21 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,27 @@ void	put_error(char *error)
 void	validate_and_rec(t_stack *stk, int ac, char **av)
 {
 	int		i;
+	int		ai;
 	int		j;
 	char	*str;
 
-	i = 0;
+	i = ft_strcmp(av[1], "-v") ? 0 : 1;
+	ai = 0;
 	while (i < ac - 1)
 	{
-		stk->a[i] = ft_atoi(av[i + 1]);
-		str = ft_itoa(stk->a[i]);
+		stk->a[ai] = ft_atoi(av[i + 1]);
+		str = ft_itoa(stk->a[ai]);
 		if (ft_strcmp(str, av[i + 1]))
 		{
 			free(str);
 			put_error("error");
 		}
 		free(str);
-		j = i;
+		j = ai;
 		while (--j >= 0)
-			if (stk->a[i] == stk->a[j])
+			if (stk->a[ai] == stk->a[j])
 				put_error("error");
+		ai++;
 		i++;
 		stk->alen++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 20:09:56 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/28 05:31:54 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/01 19:43:35 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	filling_b_by_blocks(t_stack *stk, int *blocks, int *i)
 	int	start_alen;
 
 	pivot_a = find_pivot(stk->a, stk->alen);
-	low_pivot = find_low_pivot(stk, stk->a, pivot_a, stk->alen);
+	low_pivot = find_low_pivot(stk->a, pivot_a, stk->alen);
 	start_alen = (stk->alen % 2 ? stk->alen + 1 : stk->alen);
 	blocks[*i] = stk->alen / 2;
 	while (stk->alen != start_alen / 2)
