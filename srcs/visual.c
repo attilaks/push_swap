@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 04:43:01 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/03 05:29:54 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/03 08:01:12 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			max_abs(t_stack *stk)
 	return (max);
 }
 
-void		draw_back(t_mlx *mlx)
+void		draw_back(t_stack *stk)
 {
 	int	h;
 	int	w;
@@ -37,9 +37,9 @@ void		draw_back(t_mlx *mlx)
 	{
 		w = -1;
 		while (++w < W_WIDTH)
-			mlx->back.data[h * W_WIDTH + w] = 0xFFFF00;
+			stk->mlx.back.data[h * W_WIDTH + w] = 0xFFFF00;
 	}
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win, mlx->back.img_ptr, 0, 0);
+	mlx_put_image_to_window(stk->mlx.mlx_ptr, stk->mlx.win, stk->mlx.back.img_ptr, 0, 0);
 }
 
 // void		draw_back(t_mlx *mlx)
@@ -107,7 +107,7 @@ void		draw_a(t_stack *stk)
 			i--;
 		while (++w < W_WIDTH / 2)
 			if ((w >= W_WIDTH / 4 - stk->mlx.int_width * ABS(stk->a[i]) / 2) && \
-				(w <= W_WIDTH / 4 + stk->mlx.int_width * ABS(stk->a[i]) / 2))
+				(w <= W_WIDTH / 4 + stk->mlx.int_width * ABS(stk->a[i]) / 2) && stk->a[i])
 			{
 				if (stk->a[i] < 0)	
 					stk->mlx.a.data[h * W_WIDTH + w] = 0x0000FF;
@@ -175,12 +175,12 @@ void		draw_b(t_stack *stk)
 			i--;
 		while (++w < W_WIDTH / 2)
 			if ((w >= W_WIDTH / 4 - stk->mlx.int_width * ABS(stk->b[i]) / 2) && \
-				(w <= W_WIDTH / 4 + stk->mlx.int_width * ABS(stk->b[i]) / 2))
+				(w <= W_WIDTH / 4 + stk->mlx.int_width * ABS(stk->b[i]) / 2) && stk->b[i])
 			{
 				if (stk->b[i] < 0)	
-					stk->mlx.b.data[h * W_WIDTH + w] = 0x000000;
+					stk->mlx.b.data[h * W_WIDTH + w] = 0x0000FF;
 				else
-					stk->mlx.b.data[h * W_WIDTH + w] = 0xFFFFFF;
+					stk->mlx.b.data[h * W_WIDTH + w] = 0xFF0000;
 			}
 			else if ((w > W_WIDTH / 4 + stk->mlx.int_width * ABS(stk->b[i]) / 2) \
 				&& (h == W_HEIGHT - stk->mlx.int_height * drawing))
@@ -205,6 +205,7 @@ int			visual_hook(t_stack *stk)
 		do_operation(stk, line);
 		ft_bzero(stk->mlx.a.data, W_HEIGHT * W_WIDTH / 2);
 		ft_bzero(stk->mlx.b.data, W_HEIGHT * W_WIDTH / 2);
+		draw_back(stk);
 		draw_a(stk);
 		draw_b(stk);
 		return (1);
@@ -272,8 +273,9 @@ void		visualization(t_stack *stk)
 	// mlx.b.bpp /= 4;
 	stk->mlx.int_height = W_HEIGHT / stk->alen;
 	stk->mlx.int_width = W_WIDTH / 2 / max_abs(stk);
-	draw_back(&stk->mlx);
+	draw_back(stk);
 	draw_a(stk);
+	draw_b(stk);
 	// if (get_next_line(0, &line) == 1)
 	// {
 	// 	do_operation(stk, line);

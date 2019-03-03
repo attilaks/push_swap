@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/03 05:21:29 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/03 07:59:14 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define A(i)	stk->a[i]
 # define B(i)	stk->b[i]
 
-# define W_WIDTH	1920
-# define W_HEIGHT	1080
+# define W_WIDTH	800
+# define W_HEIGHT	600
 
 typedef struct	s_img
 {
@@ -98,7 +98,7 @@ void			sort_top_three_a(t_stack *stk);
 */
 
 void			visualization(t_stack *stk);
-void			draw_back(t_mlx *mlx);
+void			draw_back(t_stack *stk);
 int				max_abs(t_stack *stk);
 void			draw_a(t_stack *stk/*, t_mlx *mlx*/);
 void			draw_b(t_stack *stk/*, t_mlx *mlx*/);
