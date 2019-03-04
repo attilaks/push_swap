@@ -6,7 +6,7 @@
 #    By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/07 18:58:02 by jwillem-          #+#    #+#              #
-#    Updated: 2019/03/03 04:45:40 by jwillem-         ###   ########.fr        #
+#    Updated: 2019/03/04 21:48:16 by jwillem-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLXFLAGS = -framework OpenGL -framework AppKit
 SRCDIR = srcs/
 OBJDIR = obj/
 
-CH_FILES = checker	visual
+CH_FILES = checker	visual	drawing
 CH_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(CH_FILES)))
 CH_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(CH_FILES)))
 

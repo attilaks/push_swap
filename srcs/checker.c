@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/03 04:45:26 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/04 21:46:05 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,17 @@ void		do_operation(t_stack *stacks, char *line)
 		ps_rev_rotate(stacks, line, 0);
 	else
 		put_error("error");
-	// print_stack(stacks);
 }
 
 static void	get_sort_instructions(t_stack *stacks, int index)
 {
 	char	*line;
 
-	// print_stack(stacks);
 	if (index == 2)
 		visualization(stacks);
 	else
 		while (get_next_line(0, &line) == 1)
 			do_operation(stacks, line);
-	print_stack(stacks);
 }
 
 void		check_sort(t_stack *stacks, int num_quant)
@@ -50,6 +47,7 @@ void		check_sort(t_stack *stacks, int num_quant)
 	int	i;
 
 	i = 0;
+	print_stack(stacks);
 	if (stacks->blen != 0 || stacks->alen != num_quant)
 		put_error("ko");
 	while (i < stacks->alen - 1)

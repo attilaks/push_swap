@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 15:17:21 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/28 00:35:20 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/04 21:46:48 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	ps_swap(t_stack *stacks, char *line, int print)
 	}
 	if (print)
 		ft_printf("%s\n", line);
-	// print_stack(stacks);
 }
 
 void	ps_push_a(t_stack *stacks, int print)
@@ -50,7 +49,6 @@ void	ps_push_a(t_stack *stacks, int print)
 		stacks->b[i] = stacks->b[i + 1];
 	if (print)
 		ft_printf("pa\n");
-	// print_stack(stacks);
 }
 
 void	ps_push_b(t_stack *stacks, int print)
@@ -69,7 +67,6 @@ void	ps_push_b(t_stack *stacks, int print)
 		stacks->a[i] = stacks->a[i + 1];
 	if (print)
 		ft_printf("pb\n");
-	// print_stack(stacks);
 }
 
 void	ps_rotate(t_stack *stacks, char *line, int print)
@@ -99,7 +96,6 @@ void	ps_rotate(t_stack *stacks, char *line, int print)
 	}
 	if (print)
 		ft_printf("%s\n", line);
-	// print_stack(stacks);
 }
 
 void	ps_rev_rotate(t_stack *stacks, char *line, int print)
@@ -129,5 +125,4 @@ void	ps_rev_rotate(t_stack *stacks, char *line, int print)
 	}
 	if (print)
 		ft_printf("%s\n", line);
-	// print_stack(stacks);
 }

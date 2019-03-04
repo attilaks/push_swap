@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/03 07:59:14 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/04 21:49:18 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ typedef struct	s_mlx
 {
 	void	*mlx_ptr;
 	void	*win;
-	t_img	back;
-	t_img	a;
-	t_img	b;
+	t_img	pic;
 	int		int_height;
 	int		int_width;
 }				t_mlx;
@@ -99,9 +97,10 @@ void			sort_top_three_a(t_stack *stk);
 
 void			visualization(t_stack *stk);
 void			draw_back(t_stack *stk);
-int				max_abs(t_stack *stk);
-void			draw_a(t_stack *stk/*, t_mlx *mlx*/);
-void			draw_b(t_stack *stk/*, t_mlx *mlx*/);
-int				visual_hook(t_stack *stk);
+// int				max_abs(t_stack *stk);
+void			draw_a(t_stack *stk);
+void			draw_b(t_stack *stk);
+// int				visual_hook(t_stack *stk);
+// int				close_win(t_stack *stk);
 
 #endif
