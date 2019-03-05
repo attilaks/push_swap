@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/05 14:33:06 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/05 21:43:35 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	get_sort_instructions(t_stack *stacks, int index)
 
 	if (index == 2)
 		visualization(stacks);
-	else
+	else if (index == 1)
 		while (get_next_line(0, &line) == 1)
 			do_operation(stacks, line);
 }
@@ -67,6 +67,8 @@ int			main(int ac, char **av)
 	stacks.alen = 0;
 	stacks.blen = 0;
 	split = NULL;
+	if (ac == 1)
+		return (0);
 	index = ft_strcmp(av[1], "-v") ? 1 : 2;
 	if ((ac == 2 && index == 1) || (ac == 3 && index == 2))
 	{
@@ -82,5 +84,7 @@ int			main(int ac, char **av)
 		get_sort_instructions(&stacks, index);
 	}
 	check_sort(&stacks, stacks.alen + stacks.blen);
+	free(stacks.a);
+	free(stacks.b);
 	return (0);
 }

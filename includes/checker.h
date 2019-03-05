@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/05 16:46:03 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/05 21:44:13 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # define A(i)	stk->a[i]
 # define B(i)	stk->b[i]
 
-# define W_WIDTH	800
-# define W_HEIGHT	600
+# define W_WIDTH	1920
+# define W_HEIGHT	1080
 
 # define INT_W	stk->mlx.int_width
 # define INT_H	stk->mlx.int_height

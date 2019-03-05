@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 01:07:02 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/01 18:40:21 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/05 21:30:01 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 
 void	stack_memory(t_stack *stk, int memory)
 {
-	if (!(stk->a = (int *)malloc(sizeof(int) * memory)) || \
-		!(stk->b = (int *)malloc(sizeof(int) * memory)))
-		put_error("error");
+	if (memory != 0)
+	{
+		if (!(stk->a = (int *)malloc(sizeof(int) * memory)) || \
+			!(stk->b = (int *)malloc(sizeof(int) * memory)))
+			put_error("error");
+	}
+	else
+	{
+		stk->a = NULL;
+		stk->b = NULL;
+	}
 }
 
 void	put_error(char *error)

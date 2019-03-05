@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 20:09:56 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/01 19:43:35 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/05 21:30:37 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,7 @@ int			main(int ac, char **av)
 		validate_and_rec(&stk, ac, av);
 	}
 	sort_stack(&stk);
+	free(stk.a);
+	free(stk.b);
 	return (0);
 }
