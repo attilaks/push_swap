@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/03 04:43:01 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/04 21:50:57 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/05 16:48:32 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	visual_hook(t_stack *stk)
 static int	close_win(t_stack *stk)
 {
 	check_sort(stk, stk->alen + stk->blen);
-    exit(0);
+	exit(0);
 }
 
 void		visualization(t_stack *stk)

@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/04 21:49:18 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/05 16:46:03 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 
 # define W_WIDTH	800
 # define W_HEIGHT	600
+
+# define INT_W	stk->mlx.int_width
+# define INT_H	stk->mlx.int_height
+
+# define BACK		0xF0FFFF
+# define POSITIVE	0xFFD700
+# define NEGATIVE	0x000000
 
 typedef struct	s_img
 {
@@ -49,6 +56,14 @@ typedef struct	s_stack
 	int		sorted;
 	t_mlx	mlx;
 }				t_stack;
+
+typedef struct	s_draw
+{
+	int	h;
+	int	w;
+	int	i;
+	int	drawing;
+}				t_draw;
 
 /*
 **	Common functions
@@ -97,10 +112,7 @@ void			sort_top_three_a(t_stack *stk);
 
 void			visualization(t_stack *stk);
 void			draw_back(t_stack *stk);
-// int				max_abs(t_stack *stk);
 void			draw_a(t_stack *stk);
 void			draw_b(t_stack *stk);
-// int				visual_hook(t_stack *stk);
-// int				close_win(t_stack *stk);
 
 #endif

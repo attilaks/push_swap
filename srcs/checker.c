@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:15:57 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/04 21:46:05 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/05 14:33:06 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void		check_sort(t_stack *stacks, int num_quant)
 	int	i;
 
 	i = 0;
-	print_stack(stacks);
 	if (stacks->blen != 0 || stacks->alen != num_quant)
 		put_error("ko");
 	while (i < stacks->alen - 1)
