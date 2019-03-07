@@ -34,7 +34,7 @@ Another goal is to write program "checker" which will check if
 "push_swap" prodused the correct lines of commands to sort the incoming integers.
 If the commands sort the integers, checker will write "OK". If not, it'll write "KO".
 
-As a bonus I made a graphical visualization of the sorting process. If one wants to see it, he should type:
+As a bonus I made a graphical visualization of the sorting process. If you want to see it, you should type:
 
 ARG=`ruby -e "puts (-50..49).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker -v $ARG
 
