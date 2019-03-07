@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 20:09:56 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/05 21:30:37 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/07 23:50:23 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,23 +84,16 @@ static void	sort_stack(t_stack *stk)
 int			main(int ac, char **av)
 {
 	t_stack	stk;
-	char	**split;
+	int		quantity;
 
+	if (ac == 1)
+		return (0);
 	stk.alen = 0;
 	stk.blen = 0;
 	stk.sorted = 0;
-	split = NULL;
-	if (ac == 2)
-	{
-		split = ft_strsplit(av[1], ' ');
-		stack_memory(&stk, split_len(split));
-		validate_and_rec_split(&stk, split_len(split), split);
-	}
-	else if (ac > 2)
-	{
-		stack_memory(&stk, ac - 1);
-		validate_and_rec(&stk, ac, av);
-	}
+	quantity = num_quantity(av);
+	stack_memory(&stk, quantity);
+	validate_and_rec(&stk, quantity, av);
 	sort_stack(&stk);
 	free(stk.a);
 	free(stk.b);

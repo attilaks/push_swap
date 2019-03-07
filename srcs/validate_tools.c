@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validates_split.c                                  :+:      :+:    :+:   */
+/*   validate_tools.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 04:07:51 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/01 18:53:32 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/07 23:52:30 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	freesplit(char **split)
+void	freesplit(char **split)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ static void	freesplit(char **split)
 	return ;
 }
 
-int			split_len(char **split)
+int		split_len(char **split)
 {
 	int	i;
 	int	len;
@@ -35,29 +35,44 @@ int			split_len(char **split)
 	return (len);
 }
 
-void		validate_and_rec_split(t_stack *stk, int numbers, char **split)
+void	put_error(char *error)
+{
+	if (!ft_strcmp(error, "error"))
+		write(2, "Error\n", 6);
+	else if (!ft_strcmp(error, "ko"))
+		ft_printf("KO\n");
+	exit(1);
+}
+
+void	duplicate_check(t_stack *stk, int ai)
+{
+	int	check;
+
+	check = ai;
+	while (--check >= 0)
+		if (stk->a[ai] == stk->a[check])
+			put_error("error");
+}
+
+int		num_quantity(char **av)
 {
 	int		i;
-	int		j;
-	char	*str;
+	int		quantity;
+	char	**split;
 
-	i = 0;
-	while (i < numbers)
+	i = ft_strcmp(av[1], "-v") ? 1 : 2;
+	quantity = 0;
+	while (av[i])
 	{
-		stk->a[i] = ft_atoi(split[i]);
-		str = ft_itoa(stk->a[i]);
-		if (ft_strcmp(str, split[i]))
+		if (ft_strchr(av[i], ' '))
 		{
-			free(str);
-			put_error("error");
+			split = ft_strsplit(av[i], ' ');
+			quantity += split_len(split);
+			freesplit(split);
 		}
-		free(str);
-		j = i;
-		while (--j >= 0)
-			if (stk->a[i] == stk->a[j])
-				put_error("error");
+		else
+			quantity++;
 		i++;
-		stk->alen++;
 	}
-	freesplit(split);
+	return (quantity);
 }

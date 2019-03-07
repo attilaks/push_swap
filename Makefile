@@ -6,7 +6,7 @@
 #    By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/07 18:58:02 by jwillem-          #+#    #+#              #
-#    Updated: 2019/03/05 21:43:28 by jwillem-         ###   ########.fr        #
+#    Updated: 2019/03/07 23:35:15 by jwillem-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ PS_FILES = push_swap	sorting		sort_three	pivots
 PS_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(PS_FILES)))
 PS_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(PS_FILES)))
 
-COMMON = validates	validates_split		operations	stack_print		
+COMMON = validates	validate_tools		operations	stack_print		
 COMMON_SRC = $(addprefix $(SRCDIR), $(addsuffix .c,$(COMMON)))
 COMMON_OBJ = $(addprefix $(OBJDIR),$(addsuffix .o,$(COMMON)))
 

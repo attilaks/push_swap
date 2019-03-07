@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/05 21:44:13 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/07 23:48:58 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,29 +70,33 @@ typedef struct	s_draw
 */
 
 void			put_error(char *error);
-void			validate_and_rec(t_stack *stk, int ac, char **av);
-void			validate_and_rec_split(t_stack *stk, int numbers, char **split);
+int				num_quantity(char **av);
+void			validate_and_rec(t_stack *stk, int quantity, char **av);
+void			record_split(t_stack *stk, int *ai, char *line);
+void			record_argument(t_stack *stk, int *ai, char *argument);
+void			duplicate_check(t_stack *stk, int ai);
 int				split_len(char **split);
+void			freesplit(char **split);
 void			stack_memory(t_stack *stk, int memory);
 
 /*
 **	Operations
 */
 
-void			ps_swap(t_stack *stacks, char *line, int print);
-void			ps_push_a(t_stack *stacks, int print);
-void			ps_push_b(t_stack *stacks, int print);
-void			ps_rotate(t_stack *stacks, char *line, int print);
-void			ps_rev_rotate(t_stack *stacks, char *line, int print);
+void			ps_swap(t_stack *stk, char *line, int print);
+void			ps_push_a(t_stack *stk, int print);
+void			ps_push_b(t_stack *stk, int print);
+void			ps_rotate(t_stack *stk, char *line, int print);
+void			ps_rev_rotate(t_stack *stk, char *line, int print);
 
-void			print_stack(t_stack *stacks);
+void			print_stack(t_stack *stk);
 
 /*
 **	Checker
 */
 
-void			do_operation(t_stack *stacks, char *line);
-void			check_sort(t_stack *stacks, int num_quant);
+void			do_operation(t_stack *stk, char *line);
+void			check_sort(t_stack *stk, int num_quant);
 
 /*
 **	Push_swap

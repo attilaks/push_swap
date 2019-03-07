@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/26 01:07:02 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/05 21:30:01 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/07 23:52:09 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,40 +27,64 @@ void	stack_memory(t_stack *stk, int memory)
 	}
 }
 
-void	put_error(char *error)
+void	record_split(t_stack *stk, int *ai, char *line)
 {
-	if (!ft_strcmp(error, "error"))
-		write(2, "Error\n", 6);
-	else if (!ft_strcmp(error, "ko"))
-		ft_printf("KO\n");
-	exit(1);
-}
-
-void	validate_and_rec(t_stack *stk, int ac, char **av)
-{
-	int		i;
-	int		ai;
 	int		j;
+	int		sub_quantity;
+	char	**split;
 	char	*str;
 
-	i = ft_strcmp(av[1], "-v") ? 0 : 1;
-	ai = 0;
-	while (i < ac - 1)
+	j = 0;
+	split = ft_strsplit(line, ' ');
+	sub_quantity = split_len(split);
+	while (j < sub_quantity)
 	{
-		stk->a[ai] = ft_atoi(av[i + 1]);
-		str = ft_itoa(stk->a[ai]);
-		if (ft_strcmp(str, av[i + 1]))
+		stk->a[*ai] = ft_atoi(split[j]);
+		str = ft_itoa(stk->a[*ai]);
+		if (ft_strcmp(str, split[j]))
 		{
 			free(str);
 			put_error("error");
 		}
 		free(str);
-		j = ai;
-		while (--j >= 0)
-			if (stk->a[ai] == stk->a[j])
-				put_error("error");
-		ai++;
-		i++;
+		duplicate_check(stk, *ai);
+		(*ai)++;
+		j++;
 		stk->alen++;
+	}
+	freesplit(split);
+}
+
+void	record_argument(t_stack *stk, int *ai, char *argument)
+{
+	char	*str;
+
+	stk->a[*ai] = ft_atoi(argument);
+	str = ft_itoa(stk->a[*ai]);
+	if (ft_strcmp(str, argument))
+	{
+		free(str);
+		put_error("error");
+	}
+	free(str);
+	duplicate_check(stk, *ai);
+	stk->alen++;
+	(*ai)++;
+}
+
+void	validate_and_rec(t_stack *stk, int quantity, char **av)
+{
+	int		i;
+	int		ai;
+
+	i = ft_strcmp(av[1], "-v") ? 1 : 2;
+	ai = 0;
+	while (ai < quantity)
+	{
+		if (ft_strchr(av[i], ' '))
+			record_split(stk, &ai, av[i]);
+		else
+			record_argument(stk, &ai, av[i]);
+		i++;
 	}
 }
