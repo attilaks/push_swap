@@ -35,3 +35,5 @@ If the commands sort the integers, checker will write "OK". If not, it'll write 
 As a bonus I made a graphical visualization of the sorting process. If one wants to see it, he should type:
 
 ARG=`ruby -e "puts (-50..49).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker -v $ARG
+
+If no visualization needed, just don't use the "-v" flag.
