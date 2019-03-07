@@ -1,6 +1,6 @@
 # push_swap, School 21/42 project.
 
-The goal of this project is to write a sorting algorithm "push_swap" which uses 11 types of operations:
+The goal of this project is to write a sorting algorithm "push_swap" which uses 2 stacks (A and B) and 11 types of operations:
 
 ***
 
