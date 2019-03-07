@@ -3,7 +3,7 @@
 The goal of this project is to write a sorting algorithm "push_swap" which uses 11 types of operations:
 
 
-sa : swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements).
+*sa* : swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements).
 
 sb : swap b - swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements).
 
