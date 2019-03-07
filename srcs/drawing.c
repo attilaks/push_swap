@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 21:47:27 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/05 16:47:55 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/08 00:41:35 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		draw_a(t_stack *stk)
 
 	draw.h = W_HEIGHT;
 	draw.i = stk->alen - 1;
-	draw.drawing = 1;
+	draw.process = 1;
 	while (--draw.h >= W_HEIGHT - INT_H * stk->alen && draw.i >= 0)
 	{
 		draw.w = -1;
@@ -46,9 +46,9 @@ void		draw_a(t_stack *stk)
 					stk->mlx.pic.data[draw.h * W_WIDTH + draw.w] = POSITIVE;
 			}
 			else if ((draw.w > W_WIDTH / 4 + INT_W * ABS(A(draw.i)) / 2) \
-				&& (draw.h == W_HEIGHT - INT_H * draw.drawing))
+				&& (draw.h == W_HEIGHT - INT_H * draw.process))
 			{
-				draw.drawing++;
+				draw.process++;
 				draw.i--;
 				break ;
 			}
@@ -61,7 +61,7 @@ void		draw_b(t_stack *stk)
 
 	draw.h = W_HEIGHT;
 	draw.i = stk->blen - 1;
-	draw.drawing = 1;
+	draw.process = 1;
 	while (--draw.h >= W_HEIGHT - INT_H * stk->blen && draw.i >= 0)
 	{
 		draw.w = -1;
@@ -75,9 +75,9 @@ void		draw_b(t_stack *stk)
 					stk->mlx.pic.data[draw.h * W_WIDTH + draw.w] = POSITIVE;
 			}
 			else if ((draw.w > W_WIDTH * 3 / 4 + INT_W * ABS(B(draw.i)) / 2) \
-				&& (draw.h == W_HEIGHT - INT_H * draw.drawing))
+				&& (draw.h == W_HEIGHT - INT_H * draw.process))
 			{
-				draw.drawing++;
+				draw.process++;
 				draw.i--;
 				break ;
 			}

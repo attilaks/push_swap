@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:31:14 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/07 23:48:58 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/08 00:42:22 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct	s_draw
 	int	h;
 	int	w;
 	int	i;
-	int	drawing;
+	int	process;
 }				t_draw;
 
 /*
