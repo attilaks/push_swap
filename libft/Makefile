@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/12/15 17:32:16 by wballaba          #+#    #+#              #
-#    Updated: 2019/02/26 03:38:15 by jwillem-         ###   ########.fr        #
+#    Created: 2018/12/15 17:32:16 by jwillem-          #+#    #+#              #
+#    Updated: 2019/03/08 02:08:17 by jwillem-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,6 @@ $(NAME): $(OBJ)
 clean:
 	@echo "Deleting library object files..."
 	@rm -rf $(OBJDIR)
-	@rm -f $(OBJMKDIR)
 	@echo "Library is cleaned!"
 
 fclean: clean
