@@ -6,11 +6,16 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/12 18:13:31 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/03/07 23:46:33 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/08 02:24:04 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+/*
+**	I don't use these functions in the final version of programs,
+**	but they helped me a lot with debugging, so I let them stay.
+*/
 
 static void	printstackif_a_islonger(t_stack *stk, int lendif)
 {
