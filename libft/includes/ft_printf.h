@@ -6,7 +6,7 @@
 /*   By: jwillem- <jwillem-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 13:57:16 by jwillem-          #+#    #+#             */
-/*   Updated: 2019/02/11 21:51:10 by jwillem-         ###   ########.fr       */
+/*   Updated: 2019/03/08 03:34:55 by jwillem-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define SIGNOFEX(ex)		(ex >= 0 ? "+" : "-")
 
 # include <stdarg.h>
-# include <stdio.h>
 # include "libft.h"
 
 int				g_len;
