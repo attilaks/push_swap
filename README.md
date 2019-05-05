@@ -38,6 +38,4 @@ As a bonus I made a graphical visualization of the sorting process. If you want 
 
 ARG=`ruby -e "puts (-250..249).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker -v $ARG
 
-`ruby -e "puts (-250..249).to_a.shuffle.join(' ')"`
-
 If no visualization needed, just don't use the "-v" flag.
